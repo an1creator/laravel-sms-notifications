@@ -1,0 +1,25 @@
+{
+    "name": "n1creator/laravel-sms-notifications",
+    "description": "Package provide sms notifications",
+    "require": {
+        "zelenin/smsru": "~4"
+    },
+    "license": "MIT",
+    "authors": [{
+        "name": "N1Creator",
+        "email": "dev@n1cretor.com"
+    }],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "N1Creator\\LaravelSmsNotifications\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "N1Creator\\LaravelSmsNotifications\\ServiceProvider"
+            ]
+        }
+    }
+}
