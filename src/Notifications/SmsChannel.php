@@ -41,6 +41,12 @@ class SmsChannel
             $message = new SmsMessage($message);
         }
 
-        $this->sender->send($phone, $message->getContent(), $message->getOptions());
+        if (is_array($phone)) {
+            foreach ($phone as $value) {
+                $this->sender->send($value, $message->getContent(), $message->getOptions());
+            }
+        } else {
+            $this->sender->send($phone, $message->getContent(), $message->getOptions());
+        }
     }
 }
