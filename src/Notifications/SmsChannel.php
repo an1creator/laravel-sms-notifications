@@ -3,7 +3,6 @@
 namespace N1Creator\LaravelSmsNotifications\Notifications;
 
 use Illuminate\Notifications\Notification;
-use N1Creator\LaravelSmsNotifications\Notifications\SmsMessage;
 use N1Creator\LaravelSmsNotifications\SmsSender;
 
 class SmsChannel
@@ -15,6 +14,7 @@ class SmsChannel
 
     /**
      * constructor.
+     *
      * @param SmsSender $sender
      */
     public function __construct(SmsSender $sender)

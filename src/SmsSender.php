@@ -13,6 +13,7 @@ class SmsSender
 
     /**
      * SmsSender constructor.
+     *
      * @param Provider $bridge
      */
     public function __construct(Provider $bridge)

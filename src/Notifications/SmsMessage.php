@@ -16,6 +16,7 @@ class SmsMessage
 
     /**
      * SmsMessage constructor.
+     *
      * @param $text
      * @param array $options
      */
@@ -28,6 +29,7 @@ class SmsMessage
 
     /**
      * @param $text
+     *
      * @return $this
      */
     public function content($text)
@@ -39,6 +41,7 @@ class SmsMessage
 
     /**
      * @param array $options
+     *
      * @return $this
      */
     public function options(array $options)

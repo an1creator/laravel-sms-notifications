@@ -21,6 +21,7 @@ class SmsRu implements Provider
 
     /**
      * SmsRuDriver constructor.
+     *
      * @param array $options
      */
     public function __construct(array $options)
@@ -32,8 +33,10 @@ class SmsRu implements Provider
      * @param $phone
      * @param $text
      * @param array $options
-     * @return bool
+     *
      * @throws SmsRuApi\Exception\Exception
+     *
+     * @return bool
      */
     public function send($phone, $text, array $options = []): bool
     {
@@ -48,8 +51,10 @@ class SmsRu implements Provider
      * @param array $phones
      * @param $message
      * @param array $options
-     * @return bool
+     *
      * @throws SmsRuApi\Exception\Exception
+     *
+     * @return bool
      */
     public function sendBatch(array $phones, $message, array $options = []): bool
     {
