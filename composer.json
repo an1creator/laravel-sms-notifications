@@ -2,7 +2,7 @@
     "name": "n1creator/laravel-sms-notifications",
     "description": "Package provide sms notifications",
     "require": {
-        "zelenin/smsru": ">=4.1"
+        "zelenin/smsru": "~5"
     },
     "license": "MIT",
     "authors": [{

@@ -72,9 +72,12 @@ class SmsRu implements Provider
     private function getClient()
     {
         if (!$this->client) {
-            return $this->client = new SmsRuApi\Api(new SmsRuApi\Auth\ApiIdAuth(
-                $this->options['api_id']
-            ));
+            return $this->client = new SmsRuApi\Api(
+                new SmsRuApi\Auth\ApiIdAuth(
+                    $this->options['api_id']
+                ),
+                new SmsRuApi\Client\Client()
+            );
         }
 
         return $this->client;
