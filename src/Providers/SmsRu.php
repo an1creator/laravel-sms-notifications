@@ -42,7 +42,7 @@ class SmsRu implements Provider
     public function send($phone, $text, array $options = []): bool
     {
         $response = $this->getClient()->smsSend(
-            new SmsRuApi\Entity\Sms($phone, $text)
+            $this->applyOptions(new SmsRuApi\Entity\Sms($phone, $text), $options)
         );
 
         $this->checkResponse($response);
@@ -60,7 +60,7 @@ class SmsRu implements Provider
     public function sendBatch(array $phones, $message, array $options = []): bool
     {
         $smsList = array_map(function ($phone) use ($message) {
-            return new SmsRuApi\Entity\Sms($phone, $message);
+            return new $this->applyOptions(new SmsRuApi\Entity\Sms($phone, $text), $options);
         }, $phones);
         $response = $this->getClient()->smsSend(new SmsRuApi\Entity\SmsPool($smsList));
 
@@ -89,5 +89,14 @@ class SmsRu implements Provider
         if ($response->code != self::CODE_OK) {
             throw new Exception($response->getDescription(), $response->code);
         }
+    }
+
+    private function applyOptions($object, $options)
+    {
+        foreach ($options as $option => $value) {
+            $object->$option = $value;
+        }
+
+        return $object;
     }
 }
