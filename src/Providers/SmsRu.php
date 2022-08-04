@@ -87,7 +87,7 @@ class SmsRu implements Provider
     private function checkResponse($response)
     {
         if ($response->code != self::CODE_OK) {
-            throw new Exception($$response->getDescription(), $response->code);
+            throw new Exception($response->getDescription(), $response->code);
         }
     }
 }
