@@ -2,6 +2,7 @@
 
 namespace N1Creator\LaravelSmsNotifications\Providers;
 
+use Exception;
 use N1Creator\LaravelSmsNotifications\Contracts\Provider;
 use Zelenin\SmsRu as SmsRuApi;
 
@@ -44,7 +45,7 @@ class SmsRu implements Provider
             new SmsRuApi\Entity\Sms($phone, $text)
         );
 
-        return $response->code == self::CODE_OK;
+        $this->checkResponse($response);
     }
 
     /**
@@ -81,5 +82,14 @@ class SmsRu implements Provider
         }
 
         return $this->client;
+    }
+
+    private function checkResponse($response)
+    {
+        if ($response->code != self::CODE_OK) {
+            $msg = isset($response->availableDescriptions[$response->code]) ? $response->availableDescriptions[$response->code] : null;
+
+            throw new Exception($msg, $response->code);
+        }
     }
 }
