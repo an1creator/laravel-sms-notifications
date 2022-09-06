@@ -58,8 +58,8 @@ class SmsRu implements Provider
      */
     public function sendBatch(array $phones, $message, array $options = []): bool
     {
-        $smsList = array_map(function ($phone) use ($message) {
-            return new $this->applyOptions(new SmsRuApi\Entity\Sms($phone, $text), $options);
+        $smsList = array_map(function ($phone) use ($message, $options) {
+            return new $this->applyOptions(new SmsRuApi\Entity\Sms($phone, $message), $options);
         }, $phones);
         $response = $this->getClient()->smsSend(new SmsRuApi\Entity\SmsPool($smsList));
 

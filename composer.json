@@ -2,13 +2,16 @@
     "name": "n1creator/laravel-sms-notifications",
     "description": "Package provide sms notifications",
     "require": {
-        "zelenin/smsru": "~5"
+        "zelenin/smsru": "~5",
+        "laravel/framework": ">=7"
     },
     "license": "MIT",
-    "authors": [{
-        "name": "N1Creator",
-        "email": "dev@n1cretor.com"
-    }],
+    "authors": [
+        {
+            "name": "N1Creator",
+            "email": "dev@n1cretor.com"
+        }
+    ],
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
