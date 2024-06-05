@@ -2,19 +2,19 @@
 
 namespace N1Creator\LaravelSmsNotifications\Sms;
 
-use Zelenin\SmsRu\Client\ClientInterface;
-use Zelenin\SmsRu\Entity\StoplistPhone;
-use Zelenin\SmsRu\Exception\Exception;
-use Zelenin\SmsRu\Response\AuthCheckResponse;
-use Zelenin\SmsRu\Response\MyBalanceResponse;
-use Zelenin\SmsRu\Response\MyLimitResponse;
-use Zelenin\SmsRu\Response\MySendersResponse;
-use Zelenin\SmsRu\Response\SmsCostResponse;
-use Zelenin\SmsRu\Response\SmsResponse;
-use Zelenin\SmsRu\Response\SmsStatusResponse;
-use Zelenin\SmsRu\Response\StoplistAddResponse;
-use Zelenin\SmsRu\Response\StoplistDelResponse;
-use Zelenin\SmsRu\Response\StoplistGetResponse;
+use N1Creator\SmsRu\Client\ClientInterface;
+use N1Creator\SmsRu\Entity\StoplistPhone;
+use N1Creator\SmsRu\Exception\Exception;
+use N1Creator\SmsRu\Response\AuthCheckResponse;
+use N1Creator\SmsRu\Response\MyBalanceResponse;
+use N1Creator\SmsRu\Response\MyLimitResponse;
+use N1Creator\SmsRu\Response\MySendersResponse;
+use N1Creator\SmsRu\Response\SmsCostResponse;
+use N1Creator\SmsRu\Response\SmsResponse;
+use N1Creator\SmsRu\Response\SmsStatusResponse;
+use N1Creator\SmsRu\Response\StoplistAddResponse;
+use N1Creator\SmsRu\Response\StoplistDelResponse;
+use N1Creator\SmsRu\Response\StoplistGetResponse;
 
 class Api
 {
