@@ -3,9 +3,9 @@
 namespace N1Creator\LaravelSmsNotifications\Providers;
 
 use N1Creator\LaravelSmsNotifications\Contracts\Provider;
-use N1Creator\LaravelSmsNotifications\Zelenin\Api;
-use N1Creator\LaravelSmsNotifications\Zelenin\ApiIdAuth;
-use N1Creator\LaravelSmsNotifications\Zelenin\Sms;
+use N1Creator\LaravelSmsNotifications\Sms\Api;
+use N1Creator\LaravelSmsNotifications\Sms\ApiIdAuth;
+use N1Creator\LaravelSmsNotifications\Sms\Sms;
 use Zelenin\SmsRu as SmsRuApi;
 
 class SmsRu implements Provider

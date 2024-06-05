@@ -1,6 +1,6 @@
 <?php
 
-namespace N1Creator\LaravelSmsNotifications\Zelenin;
+namespace N1Creator\LaravelSmsNotifications\Sms;
 
 use Zelenin\SmsRu\Client\ClientInterface;
 use Zelenin\SmsRu\Entity\StoplistPhone;
