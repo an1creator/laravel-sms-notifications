@@ -13,6 +13,12 @@ return [
      * настройки, специфичные для провайдера.
      */
     'provider_options' => [
-        'api_id' => env('SMSRU_KEY'),
+        'smsru' => [
+            'api_id' => env('SMSRU_KEY')
+        ],
+        'smskz' => [
+            'login' => env('SMSKZ_LOGIN'),
+            'secret' => env('SMSKZ_PASSWORD')
+        ]
     ],
 ];

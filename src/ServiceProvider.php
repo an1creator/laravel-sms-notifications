@@ -9,12 +9,13 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     private $providerAliases = [
         'smsru' => Providers\SmsRu::class,
+        'smskz' => Providers\SmsKz::class,
     ];
 
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/config.php' => config_path('sms.php'),
+            __DIR__ . '/config.php' => config_path('sms.php'),
         ]);
     }
 
@@ -28,7 +29,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
             return new SmsSender(
                 $app->make($providerClass, [
-                    'options' => config('sms.provider_options'),
+                    'options' => config('sms.provider_options')[config('sms.provider')],
                 ])
             );
         });
