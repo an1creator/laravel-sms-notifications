@@ -1,15 +1,13 @@
 <?php
 
-namespace N1Creator\LaravelSmsNotifications\Providers;
+namespace N1Creator\LaravelSmsNotifications\Api;
 
+use Exception;
 use GuzzleHttp\Client as HttpClient;
 use Illuminate\Support\Arr;
-use NotificationChannels\SmscRu\Exceptions\CouldNotSendNotification;
 
-class SmscRuApi
+class SmsKzApi
 {
-    public const FORMAT_JSON = 3;
-
     /** @var HttpClient */
     protected $client;
 
@@ -32,10 +30,7 @@ class SmscRuApi
     {
         $this->login = Arr::get($config, 'login');
         $this->secret = Arr::get($config, 'secret');
-        $this->sender = Arr::get($config, 'sender');
-        $this->endpoint = Arr::get($config, 'host', 'https://smsc.ru/') . 'sys/send.php';
-
-        $this->extra = Arr::get($config, 'extra', []);
+        $this->endpoint = Arr::get($config, 'host', 'https://smsc.kz/') . 'rest/send/';
 
         $this->client = new HttpClient([
             'timeout' => 5,
@@ -43,20 +38,17 @@ class SmscRuApi
         ]);
     }
 
-    public function send($params)
+    public function smsSend($params)
     {
         $base = [
-            'charset' => 'utf-8',
             'login'   => $this->login,
             'psw'     => $this->secret,
-            'sender'  => $this->sender,
-            'fmt'     => self::FORMAT_JSON,
         ];
 
-        $params = \array_merge($base, \array_filter($params), $this->extra);
+        $params = \array_merge($base, \array_filter($params));
 
         try {
-            $response = $this->client->request('POST', $this->endpoint, ['form_params' => $params]);
+            $response = $this->client->request('POST', $this->endpoint, ['json' => $params]);
 
             $response = \json_decode((string) $response->getBody(), true);
 
@@ -65,10 +57,8 @@ class SmscRuApi
             }
 
             return $response;
-        } catch (\DomainException $exception) {
-            throw CouldNotSendNotification::smscRespondedWithAnError($exception);
-        } catch (\Exception $exception) {
-            throw CouldNotSendNotification::couldNotCommunicateWithSmsc($exception);
+        } catch (Exception $exception) {
+            throw $exception;
         }
     }
 }

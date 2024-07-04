@@ -3,6 +3,7 @@
 namespace N1Creator\LaravelSmsNotifications\Providers;
 
 use N1Creator\LaravelSmsNotifications\Contracts\Provider;
+use N1Creator\LaravelSmsNotifications\Api\SmsKzApi;
 
 class SmsKz implements Provider
 {
