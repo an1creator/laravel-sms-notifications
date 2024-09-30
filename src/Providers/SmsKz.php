@@ -82,9 +82,9 @@ class SmsKz implements Provider
     private function checkResponse($response)
     {
         if (isset($response['error'])) {
-            $errorCode = $response['error_code'];
+            $errorCode = isset($response['error_code']) ? $response['error_code'] : null;
 
-            throw new SmsRuApi\Exception\Exception($response['error'], isset($errorCode) ? $errorCode : null);
+            throw new SmsRuApi\Exception\Exception($response['error'], $errorCode);
         }
 
         return true;
