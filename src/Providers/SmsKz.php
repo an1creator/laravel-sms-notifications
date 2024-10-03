@@ -2,6 +2,7 @@
 
 namespace N1Creator\LaravelSmsNotifications\Providers;
 
+use Exception;
 use N1Creator\LaravelSmsNotifications\Contracts\Provider;
 use N1Creator\LaravelSmsNotifications\Api\SmsKzApi;
 
@@ -84,7 +85,7 @@ class SmsKz implements Provider
         if (isset($response['error'])) {
             $errorCode = isset($response['error_code']) ? $response['error_code'] : null;
 
-            throw new SmsRuApi\Exception\Exception($response['error'], $errorCode);
+            throw new Exception($response['error'], $errorCode);
         }
 
         return true;
