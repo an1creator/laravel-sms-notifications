@@ -50,13 +50,7 @@ class SmsKzApi
         try {
             $response = $this->client->request('POST', $this->endpoint, ['json' => $params]);
 
-            $response = \json_decode((string) $response->getBody(), true);
-
-            if (isset($response['error'])) {
-                throw new \DomainException($response['error'], $response['error_code']);
-            }
-
-            return $response;
+            return \json_decode((string) $response->getBody(), true);
         } catch (Exception $exception) {
             throw $exception;
         }
