@@ -88,8 +88,8 @@ class SmsRu implements Provider
     private function checkResponse($response)
     {
         if ($response->code != self::CODE_OK) {
-            if (is_int($response->code)) {
-                throw new SmsRuApi\Exception\Exception($response->getDescription(), $response->code);
+            if ((int) $response->code) {
+                throw new SmsRuApi\Exception\Exception($response->getDescription(), (int) $response->code);
             } else {
                 throw new Exception('Unknown error', self::CODE_UNKNOWN_ERROR);
             }
